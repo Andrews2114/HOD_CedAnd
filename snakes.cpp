@@ -13,7 +13,7 @@ int main() {
     Board b{};
     MyGame g;
     g.start();
-    cout << 0%3 << endl;
+
     b.printBoard();
     return 0;
 }

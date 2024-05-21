@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <ctime>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -17,7 +19,7 @@ public:
 
     vector<string> getBoard() { return board1; };
 
-    void printBoard() { for (int i = 0; i < 30; i++) { cout << board1.at(i) << " "; }}
+    void printBoard() {for(const auto& board2 : board1) { cout << board2 << " "; } cout << endl;}
 
 private:
     vector<string> board1;
