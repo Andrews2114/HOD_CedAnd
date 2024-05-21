@@ -4,17 +4,16 @@
 
 #include <iostream>
 #include "../HW1CedAnd/src/MyGame.h"
-#include "../HW1CedAnd/src/Dice.h"
+#include "../HW1CedAnd/src/boardF/Board.h"
 
 using namespace std;
 
 int main() {
 
+    Board b{};
     MyGame g;
     g.start();
-    double a;
-    for (int i = 5; i > 0; i--) {
-        cout << endl << "Dice: " << Dice::roll();
-    }
+    cout << 0%3 << endl;
+    b.printBoard();
     return 0;
 }
