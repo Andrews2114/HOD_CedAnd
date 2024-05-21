@@ -4,16 +4,11 @@
 
 #include <iostream>
 #include "../HW1CedAnd/src/MyGame.h"
-#include "../HW1CedAnd/src/boardF/Board.h"
 
 using namespace std;
 
 int main() {
-
-    Board b{};
     MyGame g;
     g.start();
-
-    b.printBoard();
     return 0;
 }
