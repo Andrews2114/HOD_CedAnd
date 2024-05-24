@@ -27,26 +27,19 @@ public:
 
     string getName() { return name; };
 
-    void move(int roll) {
-        position += roll;
-        if (position >= board.getSize()) {
-            position = 29;  // Ensure player does not exceed the board limit
-            return;
-        }
-        string tile = board.getTile(position);
-        if (tile == "S") {
-            position -= penalty;
-            if (position < 0) position = 0;
-        } else if (tile == "L") {
-            position += reward;
-            if (position >= board.getSize()) position = 29;
-        }
-    }
+    int playerNumber;
+    int original = 0;
 
-    int getPosition() const {
-        return position;
-    }
+public:
+    Player(int name, const Board &board) : playerNumber(name), position(0), board(board) {}
 
+    int getName() const { return playerNumber; };
+
+    void move(int roll);
+
+    int getPosition() const;
+
+    int getOriginal() const;
 };
 
 

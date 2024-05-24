@@ -6,6 +6,7 @@
 #define POO2024_MYGAME_H
 
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
 #include <ctime>
 #include "../../HW1CedAnd/src/boardF/Board.h"
@@ -20,7 +21,7 @@ private:
     Player player2;
 
 public:
-    MyGame() : player1("Player 1", board), player2("Player 2", board) {}
+    MyGame() : player1(1, board), player2(2, board) {}
 
     void start();
 };

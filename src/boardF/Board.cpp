@@ -60,4 +60,3 @@ Board::Board(int size, int snakes, int ladders) : size(size) {
         }
     }
 }
-
