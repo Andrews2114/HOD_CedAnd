@@ -6,6 +6,7 @@
 #define POO2024_MYGAME_H
 
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
 #include <ctime>
 #include "../../HW1CedAnd/src/boardF/Board.h"

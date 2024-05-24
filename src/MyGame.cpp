@@ -1,14 +1,14 @@
 //
-// Created by 4ndre on 17/05/2024.
+// Created by karak on 23/05/2024.
 //
 
 #include "MyGame.h"
 
 void MyGame::start() {
     srand(time(0));
+    int turns = 0;
     bool gameWon = false;
-    Player *currentPlayer = &player1; // Esta implementacion la vas a cambiar, pero
-    // quedate con lo de los pointers de player que esta útil
+    Player *currentPlayer = &player1;
 
     std::ifstream archivo("C:\\Users\\karak\\OneDrive\\Escritorio\\Proyectos Clion\\SerpientesyEscaleras\\Input.txt");//Here goes the route of the inputs
 
@@ -22,7 +22,6 @@ void MyGame::start() {
 
     if(miarchivo.is_open()) {
         miarchivo << "Enter 'C' to continue or 'E' to end the game " << endl;
-            //std::cout << "Enter 'C' to continue or 'E' to end the game " << endl;
     }
 
     while (!gameWon) {
@@ -43,21 +42,22 @@ void MyGame::start() {
 
         if (input == 'E' || input == 'e') {
             if(miarchivo.is_open()) {
-                miarchivo << "Game ended by user." << std::endl;
+                miarchivo << "Thanks for playing." << std::endl;
                 miarchivo.close();
-                //std::cout << "Game ended by user." << std::endl;
+
             }
 
             break;
         } else if (input == 'C' || input == 'c') {
             int roll = rand() % 6 + 1;
             if (miarchivo.is_open()) {
-                miarchivo << currentPlayer->getName() << " rolls a " << roll << std::endl; // Escribir en el archivo
-                //std::cout << currentPlayer->getName() << " rolls a " << roll << std::endl;
+                turns += 1;
+                int initialposition = currentPlayer->getPosition();
                 currentPlayer->move(roll);
-                miarchivo << currentPlayer->getName() << " is now on tile " << currentPlayer->getPosition() << std::endl;
-                //std::cout << currentPlayer->getName() << " is now on tile " << currentPlayer->getPosition()
-                //<< std::endl;
+                int finalposition = currentPlayer->getPosition();
+
+                miarchivo << turns << " " << currentPlayer->getName() << " " << initialposition << " " << roll <<  " " << board.getTile(finalposition) << " " << finalposition << std::endl;
+
             }
 
             if (currentPlayer->getPosition() == 29) {
@@ -71,11 +71,8 @@ void MyGame::start() {
                 // Switch players
                 currentPlayer = (currentPlayer == &player1) ? &player2 : &player1;
             }
-        } /*else {
-            if(miarchivo.is_open()) {
-                miarchivo << "Invalid input. Please enter 'C' to continue or 'E' to end the game." << std::endl;
-                //std::cout << "Invalid input. Please enter 'C' to continue or 'E' to end the game." << std::endl;
-            }*/
+        }
 
         }
     }
+
