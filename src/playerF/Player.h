@@ -14,20 +14,14 @@ class Player {
 private:
     int position;
     const Board &board;
-    string name;
+    int playerNumber;
 
 
 public:
-    Player(const string &name, const Board &board) : name(name), position(0), board(board) {}
+    Player(int name, const Board &board) : playerNumber(name), position(0), board(board) {}
 
 
-  	string getName() {
-        if(name == "Player 1") {
-            return "1";
-        }else{
-            return "2";
-        }
-    };
+  	int getName() const{return playerNumber;};
 
     void move(int roll) {
         position += roll;

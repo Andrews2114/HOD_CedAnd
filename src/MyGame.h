@@ -20,7 +20,7 @@ private:
     Player player2;
 
 public:
-    MyGame() : player1("Player 1", board), player2("Player 2", board) {}
+    MyGame() : player1(1, board), player2(2, board) {}
 
     void start();
 };
