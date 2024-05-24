@@ -10,7 +10,8 @@ void MyGame::start() {
     bool gameWon = false;
     Player *currentPlayer = &player1;
 
-    std::ifstream archivo("C:\\Users\\karak\\OneDrive\\Escritorio\\Proyectos Clion\\SerpientesyEscaleras\\Input.txt");//Here goes the route of the inputs
+    std::ifstream archivo(
+            R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Input.txt)");//Here goes the route of the inputs
 
     if (!archivo.is_open()) {
         std::cerr << "Error opening file." << std::endl;
@@ -18,30 +19,30 @@ void MyGame::start() {
     }
 
     std::ofstream miarchivo;
-    miarchivo.open("C:\\Users\\karak\\OneDrive\\Escritorio\\Proyectos Clion\\SerpientesyEscaleras\\Output.txt");//Here goes the route of the outputs
+    miarchivo.open(R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output.txt)");//Here goes the route of the outputs
 
-    if(miarchivo.is_open()) {
+    if (miarchivo.is_open()) {
         miarchivo << "Enter 'C' to continue or 'E' to end the game " << endl;
     }
 
     while (!gameWon) {
         char input;
 
-        while(true) {
+        while (true) {
             if (!(archivo >> input)) {
                 archivo.close();
                 return;
             }
 
-            if(input != 'C' && input != 'E' && input != 'c' && input != 'e') {
+            if (input != 'C' && input != 'E' && input != 'c' && input != 'e') {
                 cout << "Invalid option, please press C to continue next turn or E to end the game" << endl;
-            }else {
+            } else {
                 break;
             }
         }
 
         if (input == 'E' || input == 'e') {
-            if(miarchivo.is_open()) {
+            if (miarchivo.is_open()) {
                 miarchivo << "Thanks for playing." << std::endl;
                 miarchivo.close();
 
@@ -55,8 +56,8 @@ void MyGame::start() {
                 int initialposition = currentPlayer->getPosition();
                 currentPlayer->move(roll);
                 int finalposition = currentPlayer->getPosition();
-
-                miarchivo << turns << " " << currentPlayer->getName() << " " << initialposition << " " << roll <<  " " << board.getTile(finalposition) << " " << finalposition << std::endl;
+                miarchivo << turns << " " << currentPlayer->getName() << " " << initialposition << " " << roll << " "
+                          << board.getTile(currentPlayer->getOriginal()) << " " << finalposition << endl;
 
             }
 
@@ -64,7 +65,6 @@ void MyGame::start() {
                 if (miarchivo.is_open()) {
                     miarchivo << currentPlayer->getName() << " wins!" << std::endl;
                     miarchivo.close();
-                    //std::cout << currentPlayer->getName() << " wins!" << std::endl;
                 }
                 gameWon = true;
             } else {
@@ -73,6 +73,6 @@ void MyGame::start() {
             }
         }
 
-        }
     }
+}
 
