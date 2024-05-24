@@ -11,6 +11,7 @@ void MyGame::start() {
                                     // quedate con lo de los pointers de player que esta útil
 
     while (!gameWon) {
+"Joly christamas"
         std::cout << "Enter 'C' to continue or 'E' to end the game: ";
         char input;
         std::cin >> input;
