@@ -15,34 +15,18 @@ private:
     int position;
     const Board &board;
     int playerNumber;
-
+    int original = 0;
 
 public:
     Player(int name, const Board &board) : playerNumber(name), position(0), board(board) {}
 
+    int getName() const { return playerNumber; };
 
-  	int getName() const{return playerNumber;};
+    void move(int roll);
 
-    void move(int roll) {
-        position += roll;
-        if (position >= 30) {
-            position = 29;  // Ensure player does not exceed the board limit
-            return;
-        }
-        string tile = board.getTile(position);
-        if (tile == "S") {
-            position -= 3;
-            if (position < 0) position = 0;
-        } else if (tile == "L") {
-            position += 3;
-            if (position >= 30) position = 29;
-        }
-    }
+    int getPosition() const;
 
-    int getPosition() const {
-        return position;
-    }
-
+    int getOriginal() const;
 };
 
 
