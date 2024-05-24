@@ -21,7 +21,13 @@ public:
     Player(const string &name, const Board &board) : name(name), position(0), board(board) {}
 
 
-    string getName() { return name; };
+  	string getName() {
+        if(name == "Player 1") {
+            return "1";
+        }else{
+            return "2";
+        }
+    };
 
     void move(int roll) {
         position += roll;
