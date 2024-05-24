@@ -17,24 +17,29 @@ class Board {
 public:
     Board();
 
+    Board(int size, int snakes, int ladders);
+
     vector<string> getBoard() { return board1; };
 
     void printBoard() {
         for (const auto &board2: board1) { cout << board2 << " "; }
         cout << endl;
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < size; i++) {
             cout << i << " ";
         }
         cout << endl;
     }
 
     string getTile(int position) const {
-        if (position < 0 || position >= 30) return "I";
+        if (position < 0 || position >= size) return "I";
         return board1[position];
     }
 
+    int getSize() const { return size; };
+
 private:
     vector<string> board1;
+    int size = 30;
 };
 
 

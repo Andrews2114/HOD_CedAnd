@@ -15,27 +15,31 @@ private:
     int position;
     const Board &board;
     string name;
+    int reward = 3;
+    int penalty = 3;
 
 
 public:
     Player(const string &name, const Board &board) : name(name), position(0), board(board) {}
 
+    Player(const string &name, const Board &board, int reward, int penalty) : name(name), position(0), board(board),
+                                                                              reward(reward), penalty(penalty) {}
 
     string getName() { return name; };
 
     void move(int roll) {
         position += roll;
-        if (position >= 30) {
+        if (position >= board.getSize()) {
             position = 29;  // Ensure player does not exceed the board limit
             return;
         }
         string tile = board.getTile(position);
         if (tile == "S") {
-            position -= 3;
+            position -= penalty;
             if (position < 0) position = 0;
         } else if (tile == "L") {
-            position += 3;
-            if (position >= 30) position = 29;
+            position += reward;
+            if (position >= board.getSize()) position = 29;
         }
     }
 
