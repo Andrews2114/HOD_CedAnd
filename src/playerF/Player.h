@@ -14,6 +14,19 @@ class Player {
 private:
     int position;
     const Board &board;
+    string name;
+    int reward = 3;
+    int penalty = 3;
+
+
+public:
+    Player(const string &name, const Board &board) : name(name), position(0), board(board) {}
+
+    Player(const string &name, const Board &board, int reward, int penalty) : name(name), position(0), board(board),
+                                                                              reward(reward), penalty(penalty) {}
+
+    string getName() { return name; };
+
     int playerNumber;
     int original = 0;
 
