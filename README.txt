@@ -15,3 +15,5 @@ Moves to tile N
 Ends at tile 6
 -------------------------
 Turn 1: Player 1 Tile 1 --dice roll(5)--> Tile N --end--> Tile 6
+
+IMPORTANT:  to run in machines, changing PATHS in includes and reading .txt files is necessary!
