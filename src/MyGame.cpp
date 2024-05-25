@@ -58,7 +58,6 @@ void MyGame::start() {
                 int finalposition = currentPlayer->getPosition();
                 miarchivo << turns << " " << currentPlayer->getName() << " " << initialposition << " " << roll << " "
                           << board.getTile(currentPlayer->getOriginal()) << " " << finalposition << endl;
-
             }
 
             if (currentPlayer->getPosition() == 29) {
