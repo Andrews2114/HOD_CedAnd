@@ -60,9 +60,9 @@ void MyGame::start() {
                           << board.getTile(currentPlayer->getOriginal()) << " " << finalposition << endl;
             }
 
-            if (currentPlayer->getPosition() == 29) {
+            if (currentPlayer->getPosition() >= 30) {
                 if (miarchivo.is_open()) {
-                    miarchivo << currentPlayer->getName() << " wins!" << std::endl;
+                    miarchivo << "Player " << currentPlayer->getName()  << " is the winner!"  << std::endl;
                     miarchivo.close();
                 }
                 gameWon = true;
