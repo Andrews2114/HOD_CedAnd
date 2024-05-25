@@ -17,8 +17,6 @@ class Board {
 public:
     Board();
 
-    Board(int size, int snakes, int ladders);
-
     vector<string> getBoard() { return board1; };
 
     void printBoard() {
