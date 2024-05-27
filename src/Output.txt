@@ -1,6 +1,6 @@
 Enter 'C' to continue or 'E' to end the game 
 1 1 1 5 N 6
-2 2 1 5 N 6
-3 1 6 2 N 8
-4 2 6 3 N 9
+2 2 1 2 N 3
+3 1 6 4 L 13
+4 2 3 4 N 7
 Thanks for playing.
