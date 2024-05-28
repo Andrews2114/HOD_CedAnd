@@ -15,10 +15,10 @@ void Player::move(int roll) {
 
     string tile = board.getTile(position);
     if (tile == "S") {
-        position -= 3;
+        position -= penalty;
         if (position < 0) position = 0;
     } else if (tile == "L") {
-        position += 3;
+        position += reward;
         if (position >= board.getSize()) position = 29;
     }
 }
