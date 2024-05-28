@@ -27,6 +27,7 @@ public:
 
     int getName() const { return playerNumber; };
 
+
     void move(int roll);
 
     int getPosition() const;

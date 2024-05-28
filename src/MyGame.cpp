@@ -72,7 +72,6 @@ void MyGame::start() {
                 currentPlayer = (currentPlayer == &player1) ? &player2 : &player1;
             }
         }
-
     }
 }
 

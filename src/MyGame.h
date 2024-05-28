@@ -23,6 +23,7 @@ private:
 public:
     MyGame() : player1(1, board), player2(2, board) {}
 
+
     void start();
 };
 

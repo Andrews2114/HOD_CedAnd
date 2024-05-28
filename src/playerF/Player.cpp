@@ -33,3 +33,4 @@ int Player::getOriginal() const {
     int pos = original;
     return pos;
 }
+
