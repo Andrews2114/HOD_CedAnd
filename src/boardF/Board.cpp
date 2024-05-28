@@ -56,6 +56,7 @@ Board::Board(int size, int snakes, int ladders) : size(size) {
                 board1[ladderPos] = "L";
                 usedPositions.insert(ladderPos);
                 placedLadders++;
+
             }
         }
     }
