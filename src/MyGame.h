@@ -17,15 +17,21 @@ using namespace std;
 class MyGame {
 private:
     Board board;
+    vector<Player> players_;
     Player player1;
     Player player2;
 
+
 public:
-    MyGame() : player1(1, board), player2(2, board) {}
+    MyGame();
 
+    MyGame(int numPlayers);
 
-    void start();
+    void startM();
+
+    void startA();
 };
+
 
 
 #endif //POO2024_MYGAME_H

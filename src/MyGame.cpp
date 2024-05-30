@@ -4,11 +4,55 @@
 
 #include "MyGame.h"
 
-void MyGame::start() {
+void MyGame::startA() {
     srand(time(0));
     int turns = 0;
     bool gameWon = false;
-    Player *currentPlayer = &player1;
+    int currentPlayerIndex = 0;
+    Player* currentPlayer = &players_[currentPlayerIndex];
+
+    std::ofstream miarchivo;
+    miarchivo.open(R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output.txt)");//Here goes the route of the outputs
+
+    while (!gameWon) {
+
+            int roll = rand() % 6 + 1;
+            if (miarchivo.is_open()) {
+                turns += 1;
+                int initialposition = currentPlayer->getPosition();
+                currentPlayer->move(roll);
+                int finalposition = currentPlayer->getPosition();
+                miarchivo << turns << " " << currentPlayer->getName() << " " << initialposition << " " << roll << " "
+                          << board.getTile(currentPlayer->getOriginal()) << " " << finalposition << endl;
+            }
+
+            if (currentPlayer->getPosition() >= 30) {
+                if (miarchivo.is_open()) {
+                    miarchivo << "Player " << currentPlayer->getName()  << " is the winner!" << std::endl;
+                    miarchivo.close();
+                }
+                gameWon = true;
+            } else {
+                // Switch players
+                currentPlayerIndex = (currentPlayerIndex + 1) % players_.size();
+                currentPlayer = &players_[currentPlayerIndex];
+            }
+        }
+
+    }
+
+MyGame::MyGame(int numPlayers) : board(), player1(1, board), player2(2, board)  {
+    for (int i = 1; i <= numPlayers; ++i) {
+        players_.push_back(Player(i, board));
+    }
+}
+
+void MyGame::startM() {
+    srand(time(0));
+    int turns = 0;
+    bool gameWon = false;
+    int currentPlayerIndex = 0;
+    Player* currentPlayer = &players_[currentPlayerIndex];
 
     std::ifstream archivo(
             R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Input.txt)");//Here goes the route of the inputs
@@ -62,15 +106,16 @@ void MyGame::start() {
 
             if (currentPlayer->getPosition() >= 30) {
                 if (miarchivo.is_open()) {
-                    miarchivo << "Player " << currentPlayer->getName()  << " is the winner!"  << std::endl;
+                    miarchivo << "Player " << currentPlayer->getName()  << " is the winner!" << std::endl;
                     miarchivo.close();
                 }
                 gameWon = true;
             } else {
                 // Switch players
-                currentPlayer = (currentPlayer == &player1) ? &player2 : &player1;
+                currentPlayerIndex = (currentPlayerIndex + 1) % players_.size();
+                currentPlayer = &players_[currentPlayerIndex];
             }
         }
+
     }
 }
-
