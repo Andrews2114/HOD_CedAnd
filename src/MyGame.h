@@ -18,20 +18,21 @@ class MyGame {
 private:
     Board board;
     vector<Player> players_;
-    Player player1;
-    Player player2;
-
+    string output;
 
 public:
-    MyGame();
 
-    MyGame(int numPlayers);
+    explicit MyGame(string path);
 
-    void startM();
+    MyGame(int numPlayers,string path);
 
-    void startA();
+    MyGame(int numPlayers, int size, int snakes, int ladders,string path);
+
+    MyGame(int size, int snakes, int ladders,string path); // default 2 players
+
+    void start(const string &option = "A");
+
 };
-
 
 
 #endif //POO2024_MYGAME_H
