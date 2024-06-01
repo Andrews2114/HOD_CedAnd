@@ -7,6 +7,8 @@
 using namespace std;
 
 int main() {
+    //turns should be specified in the start method of the game
+
     //manual example, input .txt file required and hardcoded due to HW specifications
     string out = R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output.txt)";
     MyGame g(out);
