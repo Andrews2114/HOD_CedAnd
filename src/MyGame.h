@@ -30,7 +30,7 @@ public:
 
     MyGame(int size, int snakes, int ladders,string path); // default 2 players
 
-    void start(const string &option="A", int customTurns=100);
+    void start(const string &option="M", int customTurns=100); //default 100 turns
 
     // display method to thank in each specific game
     void logDisplay() override { cout << "This was snakes and ladders !" << endl;} ;

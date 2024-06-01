@@ -132,7 +132,7 @@ void MyGame::start(const string &option, int customTurns) {
         miarchivo.open(output);//Here goes the route of the outputs
 
         while (!gameWon && turn < 100) {
-            // sanity check of turn, past 100 turn, 50 each, the game ends with no winner
+            // sanity check of turn, past 100 turn, 50 each, the game ends with no winner, could be depricated
             int roll = rand() % 6 + 1;
             if (miarchivo.is_open()) {
                 turn += 1;
