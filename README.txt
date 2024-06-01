@@ -17,3 +17,5 @@ Ends at tile 6
 Turn 1: Player 1 Tile 1 --dice roll(5)--> Tile N --end--> Tile 6
 
 IMPORTANT:  to run in machines, changing PATHS in includes and reading .txt files is necessary!
+Inheritance is used for the layout of a game, with a constructor that greets the user and a Display that thanks for the game.
+Polymorphism is the core of this game, due to its flexible way of implementing customizable aspects of the game with the same funcion.
