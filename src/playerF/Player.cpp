@@ -7,7 +7,7 @@
 void Player::move(int roll) {
     position += roll;
     if (position >= board.getSize()) {
-        position = 29;  // Ensure player does not exceed the board limit
+        position = board.getSize()-1;  // Ensure player does not exceed the board limit
         return;
     }
 
@@ -19,7 +19,7 @@ void Player::move(int roll) {
         if (position < 0) position = 0;
     } else if (tile == "L") {
         position += reward;
-        if (position >= board.getSize()) position = 29;
+        if (position >= board.getSize()) position = board.getSize()-1;
     }
 }
 

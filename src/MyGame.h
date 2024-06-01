@@ -11,20 +11,30 @@
 #include <ctime>
 #include "../../HW1CedAnd/src/boardF/Board.h"
 #include "../../HW1CedAnd/src/playerF/Player.h"
-
+#include "GameLayout.h"
 using namespace std;
 
-class MyGame {
+class MyGame : GameLayout {
 private:
     Board board;
-    Player player1;
-    Player player2;
+    vector<Player> players_;
+    string output;
 
 public:
-    MyGame() : player1(1, board), player2(2, board) {}
 
+    explicit MyGame(string path);
 
-    void start();
+    MyGame(int numPlayers,string path);
+
+    MyGame(int numPlayers, int size, int snakes, int ladders,string path);
+
+    MyGame(int size, int snakes, int ladders,string path); // default 2 players
+
+    void start(const string &option="M", int customTurns=100); //default 100 turns
+
+    // display method to thank in each specific game
+    void logDisplay() override { cout << "This was snakes and ladders !" << endl;} ;
+
 };
 
 
