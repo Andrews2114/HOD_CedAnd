@@ -45,11 +45,11 @@ MyGame::MyGame(int
     }
 }
 
-void MyGame::start(const string &option) {
+void MyGame::start(const string &option, int customTurns) {
     //if Manual is not specified, automatic is default, until someone wins or 100 turns is achieved
     if (option == "M") {
         srand(time(0));
-        int turns = 0;
+        int turn = 0;
         bool gameWon = false;
         int currentPlayerIndex = 0;
         Player *currentPlayer = &players_[currentPlayerIndex];
@@ -68,9 +68,9 @@ void MyGame::start(const string &option) {
         if (miarchivo.is_open()) {
             miarchivo << "Enter 'C' to continue or 'E' to end the game " << endl;
         }
+
         while (!gameWon) {
             char input;
-
             while (true) {
                 if (!(archivo >> input)) {
                     archivo.close();
@@ -93,11 +93,11 @@ void MyGame::start(const string &option) {
             } else if (input == 'C' || input == 'c') {
                 int roll = rand() % 6 + 1;
                 if (miarchivo.is_open()) {
-                    turns += 1;
+                    turn += 1;
                     int initialposition = currentPlayer->getPosition();
                     currentPlayer->move(roll);
                     int finalposition = currentPlayer->getPosition();
-                    miarchivo << turns << " " << currentPlayer->getName() << " " << initialposition << " " << roll
+                    miarchivo << turn << " " << currentPlayer->getName() << " " << initialposition << " " << roll
                               << " "
                               << board.getTile(currentPlayer->getOriginal()) << " " << finalposition << endl;
                 }
@@ -114,11 +114,16 @@ void MyGame::start(const string &option) {
                     currentPlayer = &players_[currentPlayerIndex];
                 }
             }
+            if (turn >= customTurns) { break; }
+        }
+        if (turn == 100 || turn >= customTurns) {
+            if (!gameWon) { miarchivo << endl << "Maximum turn limit exceeded" << endl; };
+            miarchivo.close();
         }
 
     } else if (option == "A") {
         srand(time(0));
-        int turns = 0;
+        int turn = 0;
         bool gameWon = false;
         int currentPlayerIndex = 0;
         Player *currentPlayer = &players_[currentPlayerIndex];
@@ -126,15 +131,15 @@ void MyGame::start(const string &option) {
         std::ofstream miarchivo;
         miarchivo.open(output);//Here goes the route of the outputs
 
-        while (!gameWon && turns < 100) {
-            // sanity check of turns, past 100 turns, 50 each, the game ends with no winner
+        while (!gameWon && turn < 100) {
+            // sanity check of turn, past 100 turn, 50 each, the game ends with no winner
             int roll = rand() % 6 + 1;
             if (miarchivo.is_open()) {
-                turns += 1;
+                turn += 1;
                 int initialposition = currentPlayer->getPosition();
                 currentPlayer->move(roll);
                 int finalposition = currentPlayer->getPosition();
-                miarchivo << turns << " " << currentPlayer->getName() << " " << initialposition << " " << roll
+                miarchivo << turn << " " << currentPlayer->getName() << " " << initialposition << " " << roll
                           << " "
                           << board.getTile(currentPlayer->getOriginal()) << " " << finalposition << endl;
 
@@ -150,8 +155,12 @@ void MyGame::start(const string &option) {
                     currentPlayer = &players_[currentPlayerIndex];
                 }
             }
+            if (turn >= customTurns) { break; }
         }
-        if (turns == 100) { miarchivo.close(); }
+        if (turn == 100 || turn >= customTurns) {
+            if (!gameWon) { miarchivo << endl << "Maximum turn limit exceeded" << endl; };
+            miarchivo.close();
+        }
     } else { cout << "Error in game mode" << endl; }
     logDisplay();
 }
