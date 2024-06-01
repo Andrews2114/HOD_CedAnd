@@ -12,7 +12,7 @@ MyGame::MyGame(int numPlayers, string path) : output(path) {
     }
 }
 
-MyGame::MyGame(const string path) :output(path) {
+MyGame::MyGame(const string path) : output(path) {
     Player tempP(board);
     for (int i = 1; i <= 2; ++i) {
         tempP.setName(i);
@@ -25,7 +25,7 @@ MyGame::MyGame(int
                size, int
                snakes, int
                ladders,
-               string path) : board(size, snakes, ladders) , output(path) {
+               string path) : board(size, snakes, ladders), output(path) {
     Player tempP(board);
     for (int i = 1; i <= numPlayers; ++i) {
         tempP.setName(i);
@@ -56,7 +56,7 @@ void MyGame::start(const string &option) {
 
         std::ifstream archivo(
                 R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Input.txt)");//Here goes the route of the input
-                //Input file is harcoded due to specifications of the HW, need to be changed for manual usage
+        //Input file is harcoded due to specifications of the HW, need to be changed for manual usage
 
         if (!archivo.is_open()) {
             std::cerr << "Error opening file." << std::endl;
@@ -116,7 +116,7 @@ void MyGame::start(const string &option) {
             }
         }
 
-    } else {
+    } else if (option == "A") {
         srand(time(0));
         int turns = 0;
         bool gameWon = false;
@@ -152,5 +152,6 @@ void MyGame::start(const string &option) {
             }
         }
         if (turns == 100) { miarchivo.close(); }
-    }
+    } else { cout << "Error in game mode" << endl; }
+    logDisplay();
 }

@@ -29,11 +29,8 @@ int main() {
 
     //Multiplayer automatic with customized board
     string out5 = R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output5.txt)";
-    MyGame g5(3, 20,2,3,out5);
+    MyGame g5(4, 40,8,10,out5);
     g5.start();
-
-//    MyGame g2(15, 2,2);
-//    g2.start();
 
     return 0;
 }
