@@ -11,13 +11,16 @@
 #include <ctime>
 #include <bits/stdc++.h>
 
+#include "../Features/Snake.h"
+#include "../Features/Ladder.h"
+
 using namespace std;
 
 class Board {
 public:
     Board();
   
-    Board(int size, int snakes, int ladders);
+    Board(int size, Snake snakes, Ladder ladders);
 
     vector<string> getBoard() { return board1; };
 
