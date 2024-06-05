@@ -18,6 +18,7 @@
 using namespace std;
 
 //Struct made to organize items in the writing process, better than classes due to the properties of their attributes
+//Struct replaces Turns() class
 struct Printing {
     int turn;
     int name;
@@ -56,7 +57,6 @@ public:
 
     // display method to thank in each specific game
     void logDisplay() override { cout << "This was snakes and ladders !" << endl; };
-
 
 
 };
