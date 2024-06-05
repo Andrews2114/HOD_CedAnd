@@ -21,24 +21,27 @@ MyGame::MyGame(const string path) : output(path) {
 }
 
 MyGame::MyGame(int
-               numPlayers, int
-               size, int
-               snakes, int
-               ladders,
-               string path) : board(size, snakes, ladders), output(path) {
-    Player tempP(board);
+               numPlayers,
+               int size,
+               int snakes,
+               int ladders,
+               string path, Snake penalty1, Ladder reward1) : board(size, snakes, ladders), output(path),
+                                                              penalty(penalty1),
+                                                              reward(reward1) {
+    Player tempP(0, board, reward, penalty);
     for (int i = 1; i <= numPlayers; ++i) {
         tempP.setName(i);
         players_.emplace_back(tempP);
     }
 }
 
-MyGame::MyGame(int
-               size, int
-               snakes, int
-               ladders,
-               string path) : board(size, snakes, ladders), output(path) {
-    Player tempP(board);
+MyGame::MyGame(int size,
+               int snakes,
+               int ladders,
+               string path, Snake penalty1, Ladder reward1) : board(size, snakes, ladders), output(path),
+                                                              penalty(penalty1),
+                                                              reward(reward1) {
+    Player tempP(0, board, reward, penalty);
     for (int i = 1; i <= 2; ++i) {
         tempP.setName(i);
         players_.emplace_back(tempP);
@@ -97,9 +100,14 @@ void MyGame::start(const string &option, int customTurns) {
                     int initialposition = currentPlayer->getPosition();
                     currentPlayer->move(roll);
                     int finalposition = currentPlayer->getPosition();
-                    miarchivo << turn << " " << currentPlayer->getName() << " " << initialposition << " " << roll
-                              << " "
-                              << board.getTile(currentPlayer->getOriginal()) << " " << finalposition << endl;
+                    //Edit struct to use the operator overloading of << in the ofstream library
+                    dummyPrint.turn = turn;
+                    dummyPrint.name = currentPlayer->getName();
+                    dummyPrint.initPos = initialposition;
+                    dummyPrint.roll = roll;
+                    dummyPrint.tile = board.getTile(currentPlayer->getOriginal());
+                    dummyPrint.finalPos = finalposition;
+                    miarchivo << dummyPrint;
                 }
 
                 if (currentPlayer->getPosition() >= static_cast<int>(board.getSize())) {
@@ -139,9 +147,13 @@ void MyGame::start(const string &option, int customTurns) {
                 int initialposition = currentPlayer->getPosition();
                 currentPlayer->move(roll);
                 int finalposition = currentPlayer->getPosition();
-                miarchivo << turn << " " << currentPlayer->getName() << " " << initialposition << " " << roll
-                          << " "
-                          << board.getTile(currentPlayer->getOriginal()) << " " << finalposition << endl;
+                dummyPrint.turn = turn;
+                dummyPrint.name = currentPlayer->getName();
+                dummyPrint.initPos = initialposition;
+                dummyPrint.roll = roll;
+                dummyPrint.tile = board.getTile(currentPlayer->getOriginal());
+                dummyPrint.finalPos = finalposition;
+                miarchivo << dummyPrint;
 
                 if (currentPlayer->getPosition() >= static_cast<int>(board.getSize())) {
                     if (miarchivo.is_open()) {

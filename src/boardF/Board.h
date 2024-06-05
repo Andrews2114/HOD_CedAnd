@@ -13,14 +13,15 @@
 
 #include "../Features/Snake.h"
 #include "../Features/Ladder.h"
+#include "../Features/Square.h"
 
 using namespace std;
 
 class Board {
 public:
     Board();
-  
-    Board(int size, Snake snakes, Ladder ladders);
+
+    Board(int size, int snakes, int ladders);
 
     vector<string> getBoard() { return board1; };
 

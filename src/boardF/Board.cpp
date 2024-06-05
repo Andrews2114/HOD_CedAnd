@@ -31,9 +31,9 @@ Board::Board() {
 
 }
 
-Board::Board(int size, Snake snakes, Ladder ladders) : size(size) {
+Board::Board(int size, int snakes, int ladders) : size(size) {
     board1.resize(size, "N");
-    if (snakes.getValue() > size || ladders.getValue() > size) {
+    if (snakes > size || ladders > size) {
         cout << "Invalid game settings\n";
     } else {
         srand(time(0));
@@ -41,7 +41,7 @@ Board::Board(int size, Snake snakes, Ladder ladders) : size(size) {
         int placedSnakes = 0;
         int placedLadders = 0;
 
-        while (placedSnakes < snakes.getValue()) {
+        while (placedSnakes < snakes) {
             int snakePos = rand() % size;
             if (snakePos != 0 && snakePos != size - 1 && usedPositions.find(snakePos) == usedPositions.end()) {
                 board1[snakePos] = "S";
@@ -50,7 +50,7 @@ Board::Board(int size, Snake snakes, Ladder ladders) : size(size) {
             }
         }
 
-        while (placedLadders < ladders.getValue()) {
+        while (placedLadders < ladders) {
             int ladderPos = rand() % size;
             if (ladderPos != 0 && ladderPos != size - 1 && usedPositions.find(ladderPos) == usedPositions.end()) {
                 board1[ladderPos] = "L";

@@ -24,8 +24,8 @@ public:
 
     Player(int name, const Board &board) : playerNumber(name), board(board) {}
 
-    Player(int name, const Board &board, int reward, int penalty) : playerNumber(name), board(board),
-                                                                    reward(reward), penalty(penalty) {}
+    Player(int name, const Board &board, Ladder ladder,Snake snake) : playerNumber(name), board(board),
+                                                                    reward(ladder.getValue()), penalty(snake.getValue()) {}
 
     int getName() const { return playerNumber; };
 

@@ -8,8 +8,10 @@
 
 class Item {
 protected:
-    int value;
+    int value=0;
 public:
+
+    Item()= default;
 
     explicit Item(int v) : value(v) {}
 
