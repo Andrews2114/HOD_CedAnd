@@ -15,6 +15,7 @@
 #include "Features/Ladder.h"
 #include "Features/Snake.h"
 
+
 using namespace std;
 
 //Struct made to organize items in the writing process, better than classes due to the properties of their attributes

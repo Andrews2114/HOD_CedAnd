@@ -8,32 +8,11 @@ using namespace std;
 
 int main() {
     // Turns class was simplified into a struct that overloads the corresponding operator
-
     //Polymorphism and operator overloading examples
     Snake snake(3);
     Ladder ladder(2);
-
-    cout << snake.getValue() << endl;
-    cout << ladder.getValue() << endl;
-
-    Square square(5);
-
-    square = square + ladder;
-    cout << square.getValue() << endl;
-
-
-    square = square + snake;
-    cout << square.getValue() << endl;
-
     ladder = ladder + ladder;
-    cout << ladder.getValue() << endl;
-
     snake = snake + snake;
-    cout << snake.getValue() << endl;
-
-    square = square + snake;
-    cout << square.getValue() << endl;
-
     /* Games implemented*/
 
     //turns should be specified in the start method of the game
