@@ -18,7 +18,6 @@ void HandleError(int numPlayers = 0, int size = 0, int snakes = 0, int ladders =
     } catch (const exception &e) {
         cout << "Exception " << e.what() << endl;
         throw invalid_argument("Invalid Parameters");
-        exit(1);
     }
 
 }
@@ -216,7 +215,6 @@ void MyGame::start(const string &option, int customTurns) {
     if (times == 4) {
         cout << "Invalid menu choice exceeded" << endl << "---GAME OVER---" << endl;
         throw invalid_argument("Invalid Parameters");
-        exit(1);
     }
     logDisplay();
 }
