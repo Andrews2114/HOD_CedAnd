@@ -17,30 +17,37 @@ int main() {
 
     //turns should be specified in the start method of the game
 
+    //Error handling implemented, used here to return 1 instead of 3 for un-catched throws, internal
+    // error handling throws the error when catching others to terminate the program
     //manual example, input .txt file required and hardcoded due to HW specifications
-    string out = R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output.txt)";
-    MyGame g(out);
-    g.start();
+    try {
+        string out = R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output.txt)";
+        MyGame g(out);
+        g.start();
 
-    //Default automatic game with two players, default board
-    string out2 = R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output2.txt)";
-    MyGame g2(out2);
-    g2.start("A");
+        //Default automatic game with two players, default board
+        string out2 = R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output2.txt)";
+        MyGame g2(out2);
+        g2.start("A");
 
-    //Default automatic game with customized board
-    string out3 = R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output3.txt)";
-    MyGame g3(20,2,3,out3,snake, ladder);
-    g3.start("A");
+        //Default automatic game with customized board
+        string out3 = R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output3.txt)";
+        MyGame g3(20, 2, 3, out3, snake, ladder);
+        g3.start("A");
 
-    //Multiplayer automatic game with default board
-    string out4 = R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output4.txt)";
-    MyGame g4(3, out4);
-    g4.start("A");
+        //Multiplayer automatic game with default board
+        //This example will raise an exception for invalid number of players
+        string out4 = R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output4.txt)";
+        MyGame g4(-3, out4);
+        g4.start("A");
 
-    //Multiplayer automatic with customized board
-    string out5 = R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output5.txt)";
-    MyGame g5(4, 40,8,10,out5, snake , ladder);
-    g5.start("A");
-
+        //Multiplayer automatic with customized board
+        string out5 = R"(C:\Users\4ndre\Downloads\POO2024\HW1CedAnd\src\Output5.txt)";
+        MyGame g5(4, 40, 8, 10, out5, snake, ladder);
+        g5.start("A");
+    } catch (const exception &e) {
+        cout << "Exception " << e.what() << endl;
+        return 1;
+    }
     return 0;
 }
